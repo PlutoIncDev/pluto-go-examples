@@ -1,1 +1,11 @@
-package main
+name: "test"
+
+variables:
+  environment: "staging"
+  secret: "${SECRET}" # TODO: environment variables
+  secret_default: "${SECRET_DEFAULT:test}" # TODO: environment variables with defaults?
+  longer_secret: "secret-${LONGER_SECRET}" # TODO: environemtn variables mixed with normal text
+
+# TODO; think if we want to separate out the dependencies or whatever?
+http:
+  port: "8080"
