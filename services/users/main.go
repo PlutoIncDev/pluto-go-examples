@@ -1,37 +1,21 @@
 package main
 
 import (
-	"pluto/pkgs/entrypoints/http"
 	"pluto/pkgs/pluto"
+	"pluto/pkgs/providers/http"
 )
 
-
 func main() {
-	// setup client
-	client, err := pluto.NewClient("users")
-	if err != nil {
-		panic(err)
-	}
+	client := pluto.NewClient("test")
 
-	httpEntrypoint := http.New()
-	client.RegisterEntrypoint(httpEntrypoint)
+	httpProvider := http.NewProvider("8080")
 
-	httpEntrypoint.HTTP("GET", "/health-check", func() {
+	httpProvider.RegisterEndpoint("GET", "/health-check", func() {
 
 	})
 
-	httpEntrypoint.HTTP("GET", "/health-check", func() {
-
-	})
-
-
-	//
-	//// HTTP
-	//client.Events.Http.Get("/health-check", handleHttpHealthCheck)
-	//client.Events.Http.Get("/user/:id", handleHttpUserByID)
-	//
-	//// RPC
-	//client.Events.Rpc.Register("findUserByID", handleRpcFindUserByID)
+	// Register the providers
+	client.RegisterProvider(httpProvider)
 
 	// Start the service
 	client.Start()
