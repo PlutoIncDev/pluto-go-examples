@@ -1,37 +1,38 @@
 package main
 
 import (
-	"pluto/pkgs/logging"
+	"pluto/pkgs/entrypoints/http"
 	"pluto/pkgs/pluto"
 )
 
-func handleRpcFindUserByID() {
-
-}
-
-func handleHttpUserByID() {
-
-}
-
-func handleHttpHealthCheck() {
-
-}
 
 func main() {
-
 	// setup client
-	client := pluto.NewClient()
+	client, err := pluto.NewClient("users")
+	if err != nil {
+		panic(err)
+	}
 
-	// setup client options
-	client.Options.SetName("users")
+	httpEntrypoint := http.New()
+	client.RegisterEntrypoint(httpEntrypoint)
 
-	// HTTP
-	client.Events.Http.Get("/health-check", handleHttpHealthCheck)
-	client.Events.Http.Get("/user/:id", handleHttpUserByID)
+	httpEntrypoint.HTTP("GET", "/health-check", func() {
 
-	// RPC
-	client.Events.Rpc.Register("findUserByID", handleRpcFindUserByID)
+	})
+
+	httpEntrypoint.HTTP("GET", "/health-check", func() {
+
+	})
+
+
+	//
+	//// HTTP
+	//client.Events.Http.Get("/health-check", handleHttpHealthCheck)
+	//client.Events.Http.Get("/user/:id", handleHttpUserByID)
+	//
+	//// RPC
+	//client.Events.Rpc.Register("findUserByID", handleRpcFindUserByID)
 
 	// Start the service
-	logging.Fatal(client.Start())
+	client.Start()
 }
