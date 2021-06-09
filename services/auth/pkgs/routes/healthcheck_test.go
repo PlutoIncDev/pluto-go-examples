@@ -4,8 +4,8 @@ import (
 	"auth/pkgs/routes"
 	"encoding/json"
 	"github.com/stretchr/testify/suite"
-	"pluto/pkgs/client"
-	"pluto/pkgs/providers/http"
+	"github.com/plutoincdev/pluto-go/pkgs/client"
+	"github.com/plutoincdev/pluto-go/pkgs/providers/http"
 	"testing"
 )
 

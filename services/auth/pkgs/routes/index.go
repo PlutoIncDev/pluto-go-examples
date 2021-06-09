@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"pluto/pkgs/providers/http"
-	"pluto/pkgs/providers/http/middlewares"
+	"github.com/plutoincdev/pluto-go/pkgs/providers/http"
+	"github.com/plutoincdev/pluto-go/pkgs/providers/http/middlewares"
 )
 
 func SetupRoute() *http.Provider {

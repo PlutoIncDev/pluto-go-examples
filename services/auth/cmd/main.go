@@ -2,8 +2,8 @@ package main
 
 import (
 	"auth/pkgs/routes"
+	"github.com/plutoincdev/pluto-go/pkgs/client"
 	log "github.com/sirupsen/logrus"
-	"pluto/pkgs/client"
 )
 
 func main() {

@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"pluto/pkgs/providers/http"
+	"github.com/plutoincdev/pluto-go/pkgs/providers/http"
 	"time"
 )
 

@@ -1,6 +1,6 @@
 package routes
 
-import "pluto/pkgs/providers/http"
+import "github.com/plutoincdev/pluto-go/pkgs/providers/http"
 
 var HealthCheckEndpoint = http.NewEndpoint("GET", "/health-check", healthCheckHandler)
 
